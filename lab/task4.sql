@@ -1,5 +1,5 @@
 SET ECHO ON
-SPOOL task3
+SPOOL task4
 
 -- Task 4.1 - Same as creating table (stolen from satvik but same so w/e)
 

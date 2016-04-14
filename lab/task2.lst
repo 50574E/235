@@ -1,0 +1,41 @@
+SQL> 
+SQL> -- Task 2.1
+SQL> 
+SQL> SELECT fname, lname
+  2  FROM Applicant JOIN Applies
+  3  ON Applicant.a# = Applies.a#
+  4  WHERE appdate < ANY
+  5  	     (SELECT appdate
+  6  	     FROM Applicant
+  7  	     WHERE a# = 1);
+
+no rows selected
+
+SQL> 
+SQL> -- Task 2.2
+SQL> 
+SQL> SELECT ptitle
+  2  FROM Position
+  3  WHERE salary >= ALL
+  4  	     (SELECT salary FROM Position);
+
+PTITLE                                                                                              
+------------------------------                                                                      
+LECTURER                                                                                            
+
+SQL> 
+SQL> -- Task 2.3 - Doesn't make sense, employees whose applications are earlier than applications of applicant 7?
+SQL> 
+SQL> SELECT fname, lname
+  2  FROM Applicant JOIN Applies
+  3  ON Applicant.a# = Applies.a#
+  4  WHERE appdate < ALL  -- WHERE ALL appdate < ALL er rangt
+  5  	     (SELECT appdate
+  6  	     FROM Applicant
+  7  	     WHERE a# = 7);
+
+no rows selected
+
+SQL> 
+SQL> 
+SQL> SPOOL OFF

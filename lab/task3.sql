@@ -5,7 +5,7 @@ SPOOL task3
 
 CREATE TABLE TOTAPPS(anum,totap) AS
 SELECT Applicant.a#, COUNT(p#)
-FROM Applicant.a# LEFT OUTER JOIN APPLIES
+FROM Applicant LEFT OUTER JOIN Applies
 ON Applicant.a# = Applies.a#
 GROUP BY Applicant.a#;
 
@@ -19,7 +19,7 @@ WHERE
   ON Position.p# = Applies.p#
   WHERE NOT EXISTS
     (SELECT a#
-    FROM Applies.a#));
+    FROM Applies));
 
 -- Satvik Version
 

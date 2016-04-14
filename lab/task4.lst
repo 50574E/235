@@ -1,0 +1,20 @@
+SQL> 
+SQL> -- Task 4.1 - Same as creating table (stolen from satvik but same so w/e)
+SQL> 
+SQL> CREATE VIEW VAPPS(p#, totap) AS
+  2  SELECT Position.p#, count(a#)
+  3  FROM Position LEFT OUTER JOIN Applies
+  4  ON Position.p# = Applies.p#
+  5  GROUP BY Position.p#
+  6  
+SQL> -- Task 4.2   IN the parenthesis is a set of all applicants who have two or more applications.
+SQL> 
+SQL> GRANT SELECT ON () TO SCOTT
+  2  
+SQL> -- Task 4.3
+SQL> 
+SQL> GRANT REFERENCES (a#, p#) ON Applies TO SCOTT
+  2  
+SQL> -- NOTE {(a#, p#) ON Applies} is the stuff you're granting access to.
+SQL> 
+SQL> SPOOL OFF

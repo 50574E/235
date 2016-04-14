@@ -1,0 +1,51 @@
+SQL> 
+SQL> -- Task 1.1
+SQL> 
+SQL> SELECT a#, p#
+  2  FROM Applies
+  3  WHERE NOT EXISTS
+  4  	     (SELECT *
+  5  	     FROM Position
+  6  	     WHERE Position.p# = Applies.p#);
+
+no rows selected
+
+SQL> 
+SQL> -- Task 1.2
+SQL> 
+SQL> SELECT a#, p#
+  2  FROM Applies
+  3  WHERE NOT EXISTS
+  4  	     (SELECT *
+  5  	     FROM Applicant
+  6  	     WHERE Applicant.a# = Applies.a#);
+
+no rows selected
+
+SQL> 
+SQL> 
+SQL> -- Task 1.3
+SQL> 
+SQL> SELECT MAX(salary) FROM Position;
+
+MAX(SALARY)                                                                                         
+-----------                                                                                         
+     450000                                                                                         
+
+SQL> 
+SQL> -- With exists keyword: (does come close to being correct ... now :)
+SQL> 
+SQL> SELECT ptitle
+  2  FROM Position p1
+  3  WHERE NOT EXISTS
+  4  	     (SELECT salary FROM Position p2 WHERE p1 = p2
+  5  	     MINUS
+  6  	     SELECT MAX(salary) FROM Position);
+	(SELECT salary FROM Position p2 WHERE p1 = p2
+	                                           *
+ERROR at line 4:
+ORA-00904: "P2": invalid identifier 
+
+
+SQL> 
+SQL> SPOOL OFF
