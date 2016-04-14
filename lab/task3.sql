@@ -19,7 +19,7 @@ WHERE
   ON Position.p# = Applies.p#
   WHERE NOT EXISTS
     (SELECT a#
-    FROM Applies.a#));
+    FROM Applies));
 
 -- Satvik Version
 
