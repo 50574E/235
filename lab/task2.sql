@@ -8,7 +8,7 @@ FROM Applicant JOIN Applies
 ON Applicant.a# = Applies.a#
 WHERE appdate < ANY
 	(SELECT appdate
-	FROM Applicant
+	FROM Applies
 	WHERE a# = 1);
 
 -- Task 2.2
@@ -25,7 +25,7 @@ FROM Applicant JOIN Applies
 ON Applicant.a# = Applies.a#
 WHERE appdate < ALL  -- WHERE ALL appdate < ALL er rangt
 	(SELECT appdate
-	FROM Applicant
+	FROM Applies
 	WHERE a# = 7);
 
 	
