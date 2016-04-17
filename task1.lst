@@ -1,0 +1,91 @@
+SQL> 
+SQL> 
+SQL> -- Task 1.1
+SQL> 
+SQL> ALTER TABLE Department
+  2  	     ADD CONSTRAINT Department_FK FOREIGN KEY(Manager#) REFERENCES Employee(e#);
+	ADD CONSTRAINT Department_FK FOREIGN KEY(Manager#) REFERENCES Employee(e#)
+	                             *
+ERROR at line 2:
+ORA-02275: such a referential constraint already exists in the table 
+
+
+SQL> 
+SQL> -- Insert new department and manager.
+SQL> INSERT INTO Department VALUES(6, 'Research Centre', '00271', TO_DATE('01/06/2016', 'DD/MM/YYYY'));
+INSERT INTO Department VALUES(6, 'Research Centre', '00271', TO_DATE('01/06/2016', 'DD/MM/YYYY'))
+            *
+ERROR at line 1:
+ORA-00947: not enough values 
+
+
+SQL> INSERT INTO DeptLocation VALUES(6, '3 Renovation Campus, North Wollongong, NSW 2500'));
+INSERT INTO DeptLocation VALUES(6, '3 Renovation Campus, North Wollongong, NSW 2500'))
+                                                                                     *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> INSERT INTO Employee VALUES('00271', 'Garret', TO_DATE('10/04/1980', 'DD/MM/YYYY'), '13 Hindmarsh Ave, North Wollongong, NSW 2500', 'M', 125.2, '00100', 6);
+INSERT INTO Employee VALUES('00271', 'Garret', TO_DATE('10/04/1980', 'DD/MM/YYYY'), '13 Hindmarsh Ave, North Wollongong, NSW 2500', 'M', 125.2, '00100', 6)
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (HLI773.EMPLOYEE_FK2) violated - parent key not 
+found 
+
+
+SQL> 
+SQL> -- Task 1.2 = done
+SQL> ALTER TABLE WorksOn
+  2  	     ADD CONSTRAINT Hours_check CHECK
+  3  		     (Hours < 30)
+  4  
+SQL> -- Task 1.3 = done
+SQL> ALTER TABLE Project
+  2  	     MODIFY (PTitle VARCHAR2(50));
+
+Table altered.
+
+SQL> 
+SQL> -- Task 1.4
+SQL> ALTER TABLE Department
+  2  	     ADD Total_staff_number NUMBER(3);
+	ADD Total_staff_number NUMBER(3)
+	    *
+ERROR at line 2:
+ORA-01430: column being added already exists in table 
+
+
+SQL> 
+SQL> -- Untested
+SQL> UPDATE Department
+  2  	     SET Total_staff_number = count(unique Employee.E#)
+  3  	     FROM Employee INNER JOIN Department
+  4  	     WHERE Employee.D# = Department.D#;
+	SET Total_staff_number = count(unique Employee.E#)
+	                         *
+ERROR at line 2:
+ORA-00934: group function is not allowed here 
+
+
+SQL> 
+SQL> -- Task 1.5
+SQL> 
+SQL> 
+SQL> 
+SQL> -- Task 1.6
+SQL> ALTER TABLE Dependent
+  2  	     MODIFY CONSTRAINT Dependent_CK CHECK (Relationship IN ('SON', 'DAUGHTER', 'SPOUSE', 'MOTHER', 'FATHER', 'OTHER');
+	MODIFY CONSTRAINT Dependent_CK CHECK (Relationship IN ('SON', 'DAUGHTER', 'SPOUSE', 'MOTHER', 'FATHER', 'OTHER')
+	                               *
+ERROR at line 2:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> 
+SQL> -- Task 1.7
+SQL> 
+SQL> 
+SQL> -- Task 1.8
+SQL> 
+SQL> SPOOL OFF

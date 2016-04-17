@@ -1,5 +1,5 @@
 SQL> 
-SQL> -- Task 3.1 - Dunno how to make a table plz help El Ena
+SQL> -- Task 3.1
 SQL> 
 SQL> CREATE TABLE TOTAPPS(anum,totap) AS
   2  SELECT Applicant.a#, COUNT(p#)
@@ -13,7 +13,7 @@ ORA-00955: name is already used by an existing object
 
 
 SQL> 
-SQL> -- Task 3.2 ... Untested
+SQL> -- Task 3.2 : Experiment first
 SQL> 
 SQL> UPDATE Position
   2  SET salary = salary * 1.1
@@ -31,7 +31,7 @@ ORA-00936: missing expression
 
 
 SQL> 
-SQL> -- Satvik Version
+SQL> -- Working Version
 SQL> 
 SQL> update position
   2  set salary = salary * 1.1
@@ -41,14 +41,14 @@ SQL> update position
   6    where not exists
   7    (select unique p# from applies)
   8  
-SQL> -- Task 3.3
+SQL> -- Task 3.3 : First was an experiment.
 SQL> 
 SQL> DELETE FROM Applicant JOIN Applies
   2  ON Applicant.a# = Applies.a#
   3  WHERE NOT EXISTS
   4    (SELECT p# FROM Applies)
   5  
-SQL> -- Satvik Version
+SQL> -- Working Version
 SQL> 
 SQL> DELETE FROM Applicant
   2  WHERE Applicant.a# not in

@@ -1,5 +1,5 @@
 SQL> 
-SQL> -- Task 4.1 - Same as creating table (stolen from satvik but same so w/e)
+SQL> -- Task 4.1 - Same as creating table
 SQL> 
 SQL> CREATE VIEW VAPPS(p#, totap) AS
   2  SELECT Position.p#, count(a#)
@@ -7,7 +7,7 @@ SQL> CREATE VIEW VAPPS(p#, totap) AS
   4  ON Position.p# = Applies.p#
   5  GROUP BY Position.p#
   6  
-SQL> -- Task 4.2   IN the parenthesis is a set of all applicants who have two or more applications.
+SQL> -- Task 4.2   IN the parenthesis is supposed to be a set of all applicants who have two or more applications.
 SQL> 
 SQL> GRANT SELECT ON () TO SCOTT
   2  

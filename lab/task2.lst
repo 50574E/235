@@ -6,10 +6,21 @@ SQL> SELECT fname, lname
   3  ON Applicant.a# = Applies.a#
   4  WHERE appdate < ANY
   5  	     (SELECT appdate
-  6  	     FROM Applicant
+  6  	     FROM Applies
   7  	     WHERE a# = 1);
 
-no rows selected
+FNAME                LNAME                                                      
+-------------------- ------------------------------                             
+MARGARET             FINCH                                                      
+GARY                 KASPAROW                                                   
+CLAUDIA              HOFFMAN                                                    
+JANUSZ               GETTA                                                      
+PETER                JONES                                                      
+JOHN                 BLACK                                                      
+MARY                 WHITE                                                      
+MARY                 WHITE                                                      
+
+8 rows selected.
 
 SQL> 
 SQL> -- Task 2.2
@@ -19,9 +30,9 @@ SQL> SELECT ptitle
   3  WHERE salary >= ALL
   4  	     (SELECT salary FROM Position);
 
-PTITLE                                                                                              
-------------------------------                                                                      
-LECTURER                                                                                            
+PTITLE                                                                          
+------------------------------                                                  
+LECTURER                                                                        
 
 SQL> 
 SQL> -- Task 2.3 - Doesn't make sense, employees whose applications are earlier than applications of applicant 7?
@@ -31,10 +42,13 @@ SQL> SELECT fname, lname
   3  ON Applicant.a# = Applies.a#
   4  WHERE appdate < ALL  -- WHERE ALL appdate < ALL er rangt
   5  	     (SELECT appdate
-  6  	     FROM Applicant
+  6  	     FROM Applies
   7  	     WHERE a# = 7);
 
-no rows selected
+FNAME                LNAME                                                      
+-------------------- ------------------------------                             
+GARY                 KASPAROW                                                   
+MARGARET             FINCH                                                      
 
 SQL> 
 SQL> 
