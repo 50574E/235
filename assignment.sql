@@ -10,7 +10,7 @@ ALTER TABLE Department
 
 -- Insert new department and manager.
 INSERT INTO Department VALUES(6, 'Research Centre', '00271', TO_DATE('01/06/2016', 'DD/MM/YYYY'));
-INSERT INTO DeptLocation VALUES(6, '3 Renovation Campus, North Wollongong, NSW 2500');
+INSERT INTO DeptLocation VALUES(6, '3 Renovation Campus, North Wollongong, NSW 2500'));
 INSERT INTO Employee VALUES('00271', 'Garret', TO_DATE('10/04/1980', 'DD/MM/YYYY'), '13 Hindmarsh Ave, North Wollongong, NSW 2500', 'M', 125.2, '00100', 6);
 
 -- Task 1.2 = done
